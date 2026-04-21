@@ -4,6 +4,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jayasurya</title>
 
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
 body {
   margin: 0;
@@ -59,9 +62,12 @@ h1 {
   padding-bottom: 5px;
 }
 
-/* Buttons (light brown premium) */
+/* Links (Premium Buttons) */
 .links a {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   margin: 12px auto;
   padding: 14px;
   width: 260px;
@@ -69,7 +75,6 @@ h1 {
   color: white;
   text-decoration: none;
   border-radius: 30px;
-  text-align: center;
   font-weight: 500;
   box-shadow: 0 8px 20px rgba(0,0,0,0.4);
   transition: 0.3s;
@@ -78,6 +83,10 @@ h1 {
 .links a:hover {
   transform: translateY(-3px) scale(1.03);
   background: linear-gradient(145deg, #b07a52, #9c6a44);
+}
+
+.links i {
+  font-size: 18px;
 }
 
 /* YouTube */
@@ -119,23 +128,36 @@ footer {
 
 <!-- Name -->
 <h1>Jayasurya</h1>
-<p class="tagline">Unmai Makkal 👁️</p>
-<p class="tagline">உண்மை புரிஞ்சவங்க இங்க தான்</p>
+<p class="tagline">News illa... meaning mukkiyam</p>
 
 <!-- Social Links -->
 <div class="links">
-  <a href="https://youtube.com/@justjayasurya">YouTube</a>
-  <a href="https://www.facebook.com/share/1La5mzJtGj/">Facebook</a>
-  <a href="https://www.instagram.com/justjayasurya">Instagram</a>
-  <a href="https://www.threads.com/@justjayasurya">Threads</a>
-  <a href="https://x.com/justjayasurya">X (Twitter)</a>
+  <a href="https://youtube.com/@justjayasurya">
+    <i class="fab fa-youtube"></i> YouTube
+  </a>
+
+  <a href="https://www.instagram.com/justjayasurya">
+    <i class="fab fa-instagram"></i> Instagram
+  </a>
+
+  <a href="https://x.com/justjayasurya">
+    <i class="fab fa-x-twitter"></i> X (Twitter)
+  </a>
+
+  <a href="https://www.facebook.com/share/1La5mzJtGj/">
+    <i class="fab fa-facebook"></i> Facebook
+  </a>
+
+  <a href="https://www.threads.com/@justjayasurya">
+    <i class="fab fa-threads"></i> Threads
+  </a>
 </div>
 
 <!-- Know Me -->
 <div class="section">
   <h2>Know Me</h2>
   <p>
-    I simplify politics, society, and real-world issues. Connecting politics, society, and human behavior to your life.
+    I simplify politics, society, and real-world issues.
     I don’t just explain news. I break down the meaning behind it.
   </p>
 </div>
@@ -143,7 +165,10 @@ footer {
 <!-- YouTube -->
 <div class="section video">
   <h2>Latest Video</h2>
- <iframe width="560" height="315" src="https://www.youtube.com/embed/CU97JkkhFII?si=jZwHfgoSne3NyfMn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CU97JkkhFII?si=SsHTOuaz2nzWyTzF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  " allowfullscreen></iframe>
+</div>
 
 <!-- Contact -->
 <div class="section contact">
