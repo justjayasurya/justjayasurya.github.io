@@ -7,7 +7,7 @@
 <style>
 body {
   margin: 0;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   background: #0d0d0d;
   color: white;
 }
@@ -15,30 +15,35 @@ body {
 /* Banner */
 .banner {
   width: 100%;
-  height: 250px;
-  background: url('banner.png') center/cover no-repeat;
+  height: auto;
+  aspect-ratio: 16 / 6;
+  background: url('banner.png') center center / cover no-repeat;
 }
 
 /* Profile */
 .profile {
   text-align: center;
-  margin-top: -70px;
+  margin-top: -60px;
 }
 
 .profile img {
-  width: 130px;
+  width: 140px;
   border-radius: 50%;
-  border: 3px solid white;
+  border: 4px solid #0d0d0d;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
 }
 
+/* Name */
 h1 {
   text-align: center;
-  margin: 10px;
+  margin: 12px 0 5px;
+  font-size: 28px;
 }
 
 .tagline {
   text-align: center;
-  color: #bbb;
+  color: #aaa;
+  margin-bottom: 25px;
 }
 
 /* Sections */
@@ -49,26 +54,30 @@ h1 {
 }
 
 .section h2 {
-  border-bottom: 2px solid #ff4b2b;
+  border-bottom: 2px solid #8b5e3c;
   display: inline-block;
   padding-bottom: 5px;
 }
 
-/* Links */
+/* Buttons (light brown premium) */
 .links a {
   display: block;
-  margin: 10px auto;
-  padding: 12px;
-  width: 220px;
-  background: #ff4b2b;
+  margin: 12px auto;
+  padding: 14px;
+  width: 260px;
+  background: linear-gradient(145deg, #a47148, #8b5e3c);
   color: white;
   text-decoration: none;
-  border-radius: 25px;
+  border-radius: 30px;
   text-align: center;
+  font-weight: 500;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  transition: 0.3s;
 }
 
 .links a:hover {
-  background: #ff416c;
+  transform: translateY(-3px) scale(1.03);
+  background: linear-gradient(145deg, #b07a52, #9c6a44);
 }
 
 /* YouTube */
@@ -78,15 +87,16 @@ h1 {
 
 iframe {
   width: 100%;
-  max-width: 500px;
-  height: 280px;
+  max-width: 560px;
+  height: 315px;
   border: none;
+  border-radius: 10px;
 }
 
 /* Contact */
 .contact p {
-  margin: 5px 0;
   color: #ccc;
+  margin: 6px 0;
 }
 
 footer {
@@ -99,14 +109,17 @@ footer {
 
 <body>
 
+<!-- Banner -->
 <div class="banner"></div>
 
+<!-- Profile -->
 <div class="profile">
-  <img src="profile.jpg">
+  <img src="profile.webp" alt="Jayasurya">
 </div>
 
+<!-- Name -->
 <h1>Jayasurya</h1>
-<p class="tagline">News illa... meaning mukkiyam 🧠</p>
+<p class="tagline">News illa... Meaning mukkiyam.</p>
 
 <!-- Social Links -->
 <div class="links">
@@ -121,21 +134,21 @@ footer {
 <div class="section">
   <h2>Know Me</h2>
   <p>
-    I break down politics, society, and real-world issues in a simple way.
-    Not just news — I focus on the meaning behind it.
+    I simplify politics, society, and real-world issues.
+    I don’t just explain news. I break down the meaning behind it.
   </p>
 </div>
 
-<!-- YouTube Section -->
+<!-- YouTube -->
 <div class="section video">
   <h2>Latest Video</h2>
-  <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID"></iframe>
+  <iframe src="https://www.youtube.com/embed/https://youtu.be/CU97JkkhFII?si=1I2-dsTgKwexV9BI"></iframe>
 </div>
 
 <!-- Contact -->
 <div class="section contact">
   <h2>Contact</h2>
-  <p>Email: yourmail@gmail.com</p>
+  <p>Email: justjayasurya@gmail.com</p>
   <p>DM me on Instagram for collaborations</p>
 </div>
 
