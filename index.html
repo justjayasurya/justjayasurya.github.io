@@ -10,16 +10,18 @@ body {
   font-family: Arial;
   background: #0d0d0d;
   color: white;
-  text-align: center;
 }
 
+/* Banner */
 .banner {
   width: 100%;
   height: 250px;
   background: url('banner.png') center/cover no-repeat;
 }
 
+/* Profile */
 .profile {
+  text-align: center;
   margin-top: -70px;
 }
 
@@ -30,14 +32,30 @@ body {
 }
 
 h1 {
+  text-align: center;
   margin: 10px;
 }
 
-p {
+.tagline {
+  text-align: center;
   color: #bbb;
 }
 
-a {
+/* Sections */
+.section {
+  padding: 30px 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.section h2 {
+  border-bottom: 2px solid #ff4b2b;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/* Links */
+.links a {
   display: block;
   margin: 10px auto;
   padding: 12px;
@@ -46,13 +64,37 @@ a {
   color: white;
   text-decoration: none;
   border-radius: 25px;
+  text-align: center;
 }
 
-a:hover {
+.links a:hover {
   background: #ff416c;
 }
-</style>
 
+/* YouTube */
+.video {
+  text-align: center;
+}
+
+iframe {
+  width: 100%;
+  max-width: 500px;
+  height: 280px;
+  border: none;
+}
+
+/* Contact */
+.contact p {
+  margin: 5px 0;
+  color: #ccc;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #777;
+}
+</style>
 </head>
 
 <body>
@@ -60,17 +102,46 @@ a:hover {
 <div class="banner"></div>
 
 <div class="profile">
-  <img src="profile.webp">
+  <img src="profile.jpg">
 </div>
 
 <h1>Jayasurya</h1>
-<p>News illa... meaning mukkiyam</p>
+<p class="tagline">News illa... meaning mukkiyam 🧠</p>
 
-<a href="https://youtube.com/@justjayasurya">YouTube</a> 
-<a href="https://www.facebook.com/share/1La5mzJtGj/">Facebook</a>
-<a href="https://www.instagram.com/justjayasurya">Instagram</a>
-<a href="https://www.threads.com/@justjayasurya">Threads</a>
-<a href="https://x.com/justjayasurya">X (Twitter)</a>
+<!-- Social Links -->
+<div class="links">
+  <a href="https://youtube.com/@justjayasurya">YouTube</a>
+  <a href="https://www.instagram.com/justjayasurya">Instagram</a>
+  <a href="https://x.com/justjayasurya">X (Twitter)</a>
+  <a href="https://www.facebook.com/share/1La5mzJtGj/">Facebook</a>
+  <a href="https://www.threads.com/@justjayasurya">Threads</a>
+</div>
+
+<!-- Know Me -->
+<div class="section">
+  <h2>Know Me</h2>
+  <p>
+    I break down politics, society, and real-world issues in a simple way.
+    Not just news — I focus on the meaning behind it.
+  </p>
+</div>
+
+<!-- YouTube Section -->
+<div class="section video">
+  <h2>Latest Video</h2>
+  <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID"></iframe>
+</div>
+
+<!-- Contact -->
+<div class="section contact">
+  <h2>Contact</h2>
+  <p>Email: yourmail@gmail.com</p>
+  <p>DM me on Instagram for collaborations</p>
+</div>
+
+<footer>
+  © 2026 Jayasurya
+</footer>
 
 </body>
 </html>
