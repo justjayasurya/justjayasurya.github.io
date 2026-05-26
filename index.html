@@ -15,13 +15,25 @@ body {
   color: white;
 }
 
-/* Banner */
+/* Banner - Better size */
 .banner {
   width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 6;
-  background: url('banner.png') center center / cover no-repeat;
+  height: 420px;
+  background: url('banner.png') center center no-repeat;
+  background-size: cover;
+  background-position: center;
 }
+
+/* Mobile optimization */
+@media (max-width:768px){
+
+.banner{
+height:260px;
+background-position:center;
+}
+
+}
+
 
 /* Profile */
 .profile {
