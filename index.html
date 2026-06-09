@@ -6,18 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Jayasurya | Reality Explained</title>
+
 <meta name="description" content="Jayasurya explains politics, society and real-world issues in a simple and powerful way.">
 <meta name="keywords" content="Jayasurya, politics explained, society analysis, Tamil content creator, YouTube channel">
 
-<!-- Open Graph (SEO for sharing) -->
-<meta property="og:title" content="Jayasurya Official">
-<meta property="og:description" content="Politics • Society • Reality Breakdown">
-<meta property="og:image" content="banner.png">
-
-<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<!-- Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -116,6 +109,27 @@ h1{
   font-size:14px;
 }
 
+/* ================= SUBSCRIBE BUTTON ================= */
+.subscribe-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-top:12px;
+  padding:12px 18px;
+  border-radius:30px;
+  background:#ff0000;
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+  box-shadow:0 10px 25px rgba(255,0,0,0.25);
+  transition:0.3s ease;
+}
+
+.subscribe-btn:hover{
+  transform:scale(1.05);
+  background:#e60000;
+}
+
 /* ================= SECTIONS ================= */
 .section{
   max-width:900px;
@@ -182,29 +196,14 @@ footer{
   color:#777;
 }
 
-/* ================= SUBSCRIBE POPUP ================= */
-.popup{
+/* ================= CANVAS ================= */
+#particles{
   position:fixed;
-  bottom:20px;
-  right:20px;
-  background:rgba(20,20,20,0.9);
-  border:1px solid var(--border);
-  padding:15px;
-  border-radius:12px;
-  backdrop-filter:blur(10px);
-  display:none;
-  z-index:100;
-  max-width:250px;
-}
-
-.popup button{
-  margin-top:10px;
-  padding:8px 12px;
-  border:none;
-  border-radius:8px;
-  background:var(--accent);
-  color:white;
-  cursor:pointer;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
 }
 
 </style>
@@ -230,6 +229,14 @@ footer{
   <h1>Jayasurya</h1>
   <p class="tagline">Unmai Makkal 👁️</p>
   <p class="tagline">Politics • Society • Reality Breakdown</p>
+
+  <!-- ✅ YOUTUBE SUBSCRIBE BUTTON -->
+  <a class="subscribe-btn"
+     href="https://www.youtube.com/@justjayasurya?sub_confirmation=1"
+     target="_blank">
+    <i class="fab fa-youtube"></i>
+    Subscribe
+  </a>
 </div>
 
 <!-- SOCIAL -->
@@ -278,14 +285,6 @@ footer{
   © 2026 Jayasurya • Built as a media brand
 </footer>
 
-<!-- SUBSCRIBE POPUP -->
-<div class="popup" id="popup">
-  <b>🔥 Subscribe?</b>
-  <p style="font-size:12px;color:#ccc;">Get updates from my channel</p>
-  <button onclick="closePopup()">Got it</button>
-</div>
-
-<!-- SCRIPTS -->
 <script>
 
 /* ================= SCROLL ANIMATION ================= */
@@ -304,44 +303,45 @@ window.addEventListener('scroll', () => {
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+function resize(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
 
 let particlesArray = [];
 
-for(let i=0;i<80;i++){
+for(let i=0;i<90;i++){
   particlesArray.push({
     x:Math.random()*canvas.width,
     y:Math.random()*canvas.height,
-    size:Math.random()*2
+    size:Math.random()*2,
+    speed:Math.random()*0.6 + 0.2
   });
 }
 
 function animate(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle="white";
+  ctx.fillStyle="rgba(255,255,255,0.6)";
 
   particlesArray.forEach(p=>{
     ctx.beginPath();
     ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
     ctx.fill();
 
-    p.y += 0.3;
-    if(p.y > canvas.height) p.y = 0;
+    p.y += p.speed;
+    p.x += Math.sin(p.y*0.01)*0.4;
+
+    if(p.y > canvas.height){
+      p.y = 0;
+      p.x = Math.random()*canvas.width;
+    }
   });
 
   requestAnimationFrame(animate);
 }
 animate();
-
-/* ================= POPUP ================= */
-setTimeout(()=>{
-  document.getElementById("popup").style.display="block";
-},5000);
-
-function closePopup(){
-  document.getElementById("popup").style.display="none";
-}
 
 </script>
 
