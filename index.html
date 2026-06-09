@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Jayasurya | Official</title>
+<title>Jayasurya | Reality Explained</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 
-/* ================= BASE ================= */
 *{
   margin:0;
   padding:0;
@@ -25,28 +25,68 @@ body{
   overflow-x:hidden;
 }
 
+/* ================= LOADING SCREEN ================= */
+#loader{
+  position:fixed;
+  inset:0;
+  background:#0b0b0f;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  z-index:9999;
+}
+
+.loader-circle{
+  width:60px;
+  height:60px;
+  border:4px solid rgba(255,255,255,0.1);
+  border-top:4px solid #c08457;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+  to{ transform:rotate(360deg); }
+}
+
+.loader-text{
+  margin-top:15px;
+  color:#aaa;
+  font-size:14px;
+  letter-spacing:1px;
+}
+
+/* ================= PARTICLES ================= */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
+}
+
 /* ================= NAV ================= */
 nav{
-  display:flex;
-  justify-content:space-between;
-  padding:14px 20px;
-  background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(10px);
   position:sticky;
   top:0;
+  background:rgba(0,0,0,0.4);
+  backdrop-filter:blur(12px);
+  padding:14px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid rgba(255,255,255,0.1);
   z-index:10;
 }
 
-nav a{
-  color:#aaa;
-  text-decoration:none;
-  margin-left:15px;
+nav span{
+  color:#c08457;
 }
 
 /* ================= HERO ================= */
 .hero{
-  height:380px;
-  background:url('banner.png') center/cover;
+  height:420px;
+  background:url('banner.png') center/cover no-repeat;
   position:relative;
 }
 
@@ -54,7 +94,7 @@ nav a{
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(to bottom,transparent,#0b0b0f);
+  background:linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.95));
 }
 
 /* ================= PROFILE ================= */
@@ -64,96 +104,97 @@ nav a{
 }
 
 .profile img{
-  width:130px;
-  height:130px;
+  width:140px;
+  height:140px;
   border-radius:50%;
-  border:3px solid #333;
+  border:3px solid rgba(255,255,255,0.2);
 }
 
-h1{ margin-top:10px; }
-
-.tag{
-  color:#aaa;
-  font-size:14px;
+h1{
+  margin-top:10px;
 }
 
-/* ================= BUTTON ================= */
-.btn{
+/* ================= SUBSCRIBE BUTTON ================= */
+.subscribe-btn{
   display:inline-flex;
   align-items:center;
-  gap:10px;
+  gap:8px;
   margin-top:10px;
-  padding:12px 18px;
-  border-radius:30px;
+  padding:10px 18px;
   background:#ff0000;
   color:white;
   text-decoration:none;
+  border-radius:25px;
   font-weight:600;
+  transition:0.3s;
 }
 
-/* ================= LINKS ================= */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-  gap:10px;
-  padding:20px;
-  max-width:800px;
-  margin:auto;
-}
-
-.grid a{
-  background:#1c1c1c;
-  padding:12px;
-  border-radius:10px;
-  text-align:center;
-  color:white;
-  text-decoration:none;
+.subscribe-btn:hover{
+  transform:scale(1.05);
+  background:#cc0000;
 }
 
 /* ================= SECTIONS ================= */
 .section{
-  display:none;
-  padding:20px;
-  max-width:800px;
-  margin:auto;
+  max-width:900px;
+  margin:50px auto;
+  padding:0 20px;
 }
 
-.active{
-  display:block;
-}
-
-/* ================= CARD ================= */
 .card{
-  background:#1c1c1c;
-  padding:15px;
-  margin:10px 0;
-  border-radius:10px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:18px;
+  padding:25px;
+  backdrop-filter:blur(12px);
 }
 
-/* ================= ADMIN ================= */
-input,textarea{
-  width:100%;
-  padding:10px;
-  margin:5px 0;
-  border-radius:6px;
-  border:none;
+/* ================= SOCIAL ================= */
+.links{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:12px;
 }
 
-button{
-  padding:10px 15px;
-  background:#c08457;
-  border:none;
+.links a{
+  text-align:center;
+  padding:12px;
+  border-radius:12px;
+  text-decoration:none;
   color:white;
-  border-radius:6px;
-  cursor:pointer;
+  background:linear-gradient(145deg,#8b5e3c,#c08457);
+  transition:0.3s;
 }
 
-/* ================= PARTICLES ================= */
-#particles{
-  position:fixed;
+.links a:hover{
+  transform:translateY(-4px);
+}
+
+/* ================= VIDEO ================= */
+iframe{
   width:100%;
-  height:100%;
-  z-index:-1;
+  height:360px;
+  border:none;
+  border-radius:12px;
+}
+
+/* ================= FOOTER ================= */
+footer{
+  text-align:center;
+  padding:30px;
+  color:#777;
+}
+
+/* ================= ANIMATION ================= */
+.fade{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+}
+
+.fade.show{
+  opacity:1;
+  transform:translateY(0);
 }
 
 </style>
@@ -161,16 +202,19 @@ button{
 
 <body>
 
+<!-- ================= LOADER ================= -->
+<div id="loader">
+  <div class="loader-circle"></div>
+  <div class="loader-text">Loading Reality...</div>
+</div>
+
+<!-- ================= PARTICLES ================= -->
 <canvas id="particles"></canvas>
 
 <!-- NAV -->
 <nav>
-  <div>Jayasurya</div>
-  <div>
-    <a href="#" onclick="show('home')">Home</a>
-    <a href="#" onclick="show('about')">About</a>
-    <a href="#" onclick="openAdmin()">Admin</a>
-  </div>
+  <h3>Jaya<span>surya</span></h3>
+  <i class="fa-solid fa-bolt"></i>
 </nav>
 
 <!-- HERO -->
@@ -178,164 +222,117 @@ button{
 
 <!-- PROFILE -->
 <div class="profile">
-  <img src="profile.webp">
+  <img src="profile.webp" alt="">
   <h1>Jayasurya</h1>
-  <p class="tag">Politics • Society • Reality Breakdown</p>
 
-  <a class="btn" href="https://www.youtube.com/@justjayasurya?sub_confirmation=1" target="_blank">
-    <i class="fab fa-youtube"></i> Subscribe
+  <!-- YOUTUBE SUBSCRIBE BUTTON -->
+  <a class="subscribe-btn"
+     href="https://www.youtube.com/@justjayasurya?sub_confirmation=1"
+     target="_blank">
+     <i class="fab fa-youtube"></i> Subscribe
   </a>
+
+  <p style="color:#aaa;margin-top:8px;">Politics • Society • Reality Breakdown</p>
 </div>
 
-<!-- HOME -->
-<div id="home" class="section active">
+<!-- SOCIAL -->
+<div class="section fade">
+  <div class="card">
+    <h2>Connect</h2>
+    <div class="links">
 
-  <h2 style="text-align:center;">Social Links</h2>
+      <a href="https://youtube.com/@justjayasurya"><i class="fab fa-youtube"></i> YouTube</a>
+      <a href="https://instagram.com/justjayasurya"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="https://x.com/justjayasurya"><i class="fab fa-x-twitter"></i> X</a>
+      <a href="https://t.me/JustjayasuryaOfficial"><i class="fab fa-telegram"></i> Telegram</a>
 
-  <div class="grid">
-    <a href="https://instagram.com/justjayasurya">Instagram</a>
-    <a href="https://x.com/justjayasurya">X</a>
-    <a href="https://t.me/JustjayasuryaOfficial">Telegram</a>
-    <a href="https://spotify.com">Spotify</a>
+    </div>
   </div>
-
-  <h2 style="text-align:center;">Latest Posts</h2>
-  <div id="posts"></div>
-
 </div>
 
 <!-- ABOUT -->
-<div id="about" class="section">
-  <h2>About Me</h2>
-  <p style="color:#aaa;line-height:1.7;">
-    I simplify politics, society and real-world systems.
-    I break down what people don’t understand in simple form.
-  </p>
+<div class="section fade">
+  <div class="card">
+    <h2>About</h2>
+    <p style="color:#ccc;line-height:1.7;">
+      I simplify politics and society. I decode real-world systems in a way anyone can understand.
+    </p>
+  </div>
 </div>
 
-<!-- ADMIN (hidden popup style) -->
-<div id="admin" class="section">
-
-  <h2>Admin Panel</h2>
-
-  <input id="title" placeholder="Title">
-  <textarea id="content" placeholder="Content"></textarea>
-  <button onclick="savePost()">Publish</button>
-
-  <h3 style="margin-top:20px;">All Posts</h3>
-  <div id="adminPosts"></div>
-
+<!-- VIDEO -->
+<div class="section fade">
+  <div class="card">
+    <h2>Featured Video</h2>
+    <iframe src="https://www.youtube.com/embed/oLZQYplu1Gg" allowfullscreen></iframe>
+  </div>
 </div>
 
+<footer>
+  © 2026 Jayasurya
+</footer>
+
+<!-- ================= SCRIPTS ================= -->
 <script>
 
-/* ================= PAGE SWITCH ================= */
-function show(page){
-  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-  document.getElementById(page).classList.add('active');
-}
+/* ===== LOADER REMOVE ===== */
+window.addEventListener("load",()=>{
+  setTimeout(()=>{
+    document.getElementById("loader").style.display="none";
+  },1200);
+});
 
-/* ================= ADMIN LOGIN ================= */
-function openAdmin(){
-  let pass = prompt("Enter Admin Password:");
-  if(pass === "1234"){
-    show('admin');
-    loadAdmin();
-  } else {
-    alert("Wrong password");
-  }
-}
+/* ===== SCROLL ANIMATION ===== */
+const faders = document.querySelectorAll(".fade");
 
-/* ================= STORAGE ================= */
-function getPosts(){
-  return JSON.parse(localStorage.getItem("posts") || "[]");
-}
-
-function savePosts(posts){
-  localStorage.setItem("posts", JSON.stringify(posts));
-}
-
-/* ================= SAVE POST ================= */
-function savePost(){
-  let title = document.getElementById("title").value;
-  let content = document.getElementById("content").value;
-
-  let posts = getPosts();
-  posts.push({title, content});
-
-  savePosts(posts);
-
-  loadHome();
-  loadAdmin();
-}
-
-/* ================= LOAD HOME POSTS ================= */
-function loadHome(){
-  let posts = getPosts();
-  let html = "";
-
-  posts.slice().reverse().forEach(p=>{
-    html += `
-      <div class="card">
-        <b>${p.title}</b>
-        <p style="color:#aaa">${p.content}</p>
-      </div>
-    `;
+window.addEventListener("scroll",()=>{
+  faders.forEach(el=>{
+    const top = el.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      el.classList.add("show");
+    }
   });
+});
 
-  document.getElementById("posts").innerHTML = html;
-}
+/* ===== PARTICLES (GLOW STYLE) ===== */
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
 
-/* ================= LOAD ADMIN POSTS ================= */
-function loadAdmin(){
-  let posts = getPosts();
-  let html = "";
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-  posts.slice().reverse().forEach(p=>{
-    html += `
-      <div class="card">
-        <b>${p.title}</b>
-        <p>${p.content}</p>
-      </div>
-    `;
-  });
-
-  document.getElementById("adminPosts").innerHTML = html;
-}
-
-loadHome();
-
-/* ================= PARTICLES ================= */
-const c = document.getElementById("particles");
-const ctx = c.getContext("2d");
-c.width = window.innerWidth;
-c.height = window.innerHeight;
-
-let dots = [];
+let particles = [];
 
 for(let i=0;i<60;i++){
-  dots.push({
-    x:Math.random()*c.width,
-    y:Math.random()*c.height,
-    r:Math.random()*2
+  particles.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    r:Math.random()*2+1,
+    d:Math.random()*1
   });
 }
 
 function draw(){
-  ctx.clearRect(0,0,c.width,c.height);
-  ctx.fillStyle="white";
+  ctx.clearRect(0,0,canvas.width,canvas.height);
 
-  dots.forEach(d=>{
+  for(let i=0;i<particles.length;i++){
+    let p = particles[i];
+
+    ctx.fillStyle="rgba(192,132,87,0.6)";
     ctx.beginPath();
-    ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
     ctx.fill();
 
-    d.y += 0.4;
-    if(d.y > c.height) d.y = 0;
-  });
+    p.y += p.d;
+    if(p.y > canvas.height){
+      p.y = 0;
+      p.x = Math.random()*canvas.width;
+    }
+  }
 
   requestAnimationFrame(draw);
 }
+
 draw();
 
 </script>
