@@ -1,215 +1,236 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jayasurya</title>
 
-<!-- Font Awesome Icons -->
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0d0d0d;
-  color: white;
+:root{
+  --bg1:#0b0b0f;
+  --bg2:#111827;
+  --card: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.12);
+  --accent:#c08457;
+  --accent2:#8b5e3c;
+  --text:#ffffff;
+  --muted:#b5b5b5;
 }
 
-/* Banner - Better size */
-.banner {
-  width: 100%;
-  height: 420px;
-  background: url('banner.png') center center no-repeat;
-  background-size: cover;
-  background-position: center;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins', sans-serif;
 }
 
-/* Mobile optimization */
-@media (max-width:768px){
-
-.banner{
-height:260px;
-background-position:center;
+body{
+  background: radial-gradient(circle at top, #1a1a2e, #0b0b0f 60%);
+  color:var(--text);
 }
 
+/* NAV */
+nav{
+  position:sticky;
+  top:0;
+  backdrop-filter: blur(12px);
+  background: rgba(0,0,0,0.4);
+  border-bottom:1px solid var(--border);
+  padding:14px 20px;
+  z-index:10;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-
-/* Profile */
-.profile {
-  text-align: center;
-  margin-top: -60px;
+nav h2{
+  font-size:18px;
+  letter-spacing:1px;
 }
 
-.profile img {
-  width: 140px;
-  border-radius: 50%;
-  border: 4px solid #0d0d0d;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+nav span{
+  color:var(--accent);
 }
 
-/* Name */
-h1 {
-  text-align: center;
-  margin: 12px 0 5px;
-  font-size: 28px;
+/* HERO */
+.hero{
+  position:relative;
+  height:420px;
+  background:url('banner.png') center/cover no-repeat;
 }
 
-.tagline {
-  text-align: center;
-  color: #aaa;
-  margin-bottom: 25px;
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(11,11,15,0.95));
 }
 
-/* Sections */
-.section {
-  padding: 30px 20px;
-  max-width: 800px;
-  margin: auto;
+/* PROFILE */
+.profile{
+  text-align:center;
+  margin-top:-70px;
+  position:relative;
+  z-index:2;
 }
 
-.section h2 {
-  border-bottom: 2px solid #8b5e3c;
-  display: inline-block;
-  padding-bottom: 5px;
+.profile img{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  border:3px solid rgba(255,255,255,0.2);
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
 }
 
-/* Links (Premium Buttons) */
-.links a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin: 12px auto;
-  padding: 14px;
-  width: 260px;
-  background: linear-gradient(145deg, #a47148, #8b5e3c);
-  color: white;
-  text-decoration: none;
-  border-radius: 30px;
-  font-weight: 500;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-  transition: 0.3s;
+h1{
+  margin-top:12px;
+  font-size:28px;
 }
 
-.links a:hover {
-  transform: translateY(-3px) scale(1.03);
-  background: linear-gradient(145deg, #b07a52, #9c6a44);
+.tagline{
+  color:var(--muted);
+  font-size:14px;
+  margin-top:5px;
 }
 
-.links i {
-  font-size: 18px;
+/* SECTION */
+.section{
+  max-width:900px;
+  margin:50px auto;
+  padding:0 20px;
 }
 
-/* YouTube */
-.video {
-  text-align: center;
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:25px;
+  backdrop-filter: blur(10px);
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
 }
 
-iframe {
-  width: 100%;
-  max-width: 560px;
-  height: 315px;
-  border: none;
-  border-radius: 10px;
+.section h2{
+  margin-bottom:15px;
+  font-size:18px;
+  color:var(--accent);
 }
 
-/* Contact */
-.contact p {
-  color: #ccc;
-  margin: 6px 0;
+/* SOCIAL GRID */
+.links{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap:12px;
 }
 
-footer {
-  text-align: center;
-  padding: 20px;
-  color: #777;
+.links a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:12px;
+  border-radius:14px;
+  text-decoration:none;
+  color:white;
+  background:linear-gradient(145deg, var(--accent2), var(--accent));
+  transition:0.3s;
+  font-size:14px;
+}
+
+.links a:hover{
+  transform:translateY(-4px);
+  filter:brightness(1.1);
+}
+
+/* VIDEO */
+.video iframe{
+  width:100%;
+  height:360px;
+  border:none;
+  border-radius:14px;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:30px;
+  color:#777;
+  font-size:13px;
+}
+
+/* ANIMATION */
+.card, .links a, .profile img{
+  transition:0.3s ease;
 }
 </style>
 </head>
 
 <body>
 
-<!-- Banner -->
-<div class="banner"></div>
+<nav>
+  <h2>Jayasu<span>rya</span></h2>
+  <div><i class="fa-solid fa-bolt"></i></div>
+</nav>
 
-<!-- Profile -->
+<div class="hero"></div>
+
 <div class="profile">
   <img src="profile.webp" alt="Jayasurya">
+  <h1>Jayasurya</h1>
+  <p class="tagline">Unmai Makkal 👁️</p>
+  <p class="tagline">Politics • Society • Reality Breakdown</p>
 </div>
 
-<!-- Name -->
-<h1>Jayasurya</h1>
-<p class="tagline">Unmai Makkal 👁️</p>
-<p class="tagline">உண்மை புரிஞ்சவங்க இங்க தான்</p>
-
-<!-- Social Links -->
-<div class="links">
-  <a href="https://youtube.com/@justjayasurya">
-    <i class="fab fa-youtube"></i> YouTube
-  </a>
-
-  <a href="https://open.spotify.com/show/1ez3c8dsOzGrDub04uT2iR?si=5ecce486d22d4c25" target="_blank">
-    <i class="fab fa-spotify"></i> Spotify
-  </a>
-
-  <a href="https://www.facebook.com/share/1La5mzJtGj/">
-    <i class="fab fa-facebook"></i> Facebook
-  </a>
-
-  <a href="https://www.instagram.com/justjayasurya">
-    <i class="fab fa-instagram"></i> Instagram
-  </a>
-
-  <a href="https://www.threads.com/@justjayasurya">
-    <i class="fab fa-threads"></i> Threads
-  </a>
-
-  <a href="https://x.com/justjayasurya">
-    <i class="fab fa-x-twitter"></i> X (Twitter)
-  </a>
-
-  <a href="https://t.me/JustjayasuryaOfficial">
-    <i class="fab fa-telegram"></i> Telegram
-  </a>
-
-  <a href="https://www.pinterest.com/justjayasurya">
-    <i class="fab fa-pinterest"></i> Pinterest
-  </a>
-  
-</div>
-
-<!-- Know Me -->
+<!-- SOCIAL -->
 <div class="section">
-  <h2>Know Me</h2>
-  <p>
-    I simplify politics, society, and real-world issues.
-    I don’t just explain news. I break down the meaning behind it.
-  </p>
+  <div class="card">
+    <h2>Connect With Me</h2>
+    <div class="links">
+
+      <a href="https://youtube.com/@justjayasurya"><i class="fab fa-youtube"></i> YouTube</a>
+      <a href="https://open.spotify.com/show/1ez3c8dsOzGrDub04uT2iR"><i class="fab fa-spotify"></i> Spotify</a>
+      <a href="https://instagram.com/justjayasurya"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="https://x.com/justjayasurya"><i class="fab fa-x-twitter"></i> X</a>
+      <a href="https://t.me/JustjayasuryaOfficial"><i class="fab fa-telegram"></i> Telegram</a>
+      <a href="https://pinterest.com/justjayasurya"><i class="fab fa-pinterest"></i> Pinterest</a>
+
+    </div>
+  </div>
 </div>
 
-<!-- YouTube -->
+<!-- ABOUT -->
+<div class="section">
+  <div class="card">
+    <h2>About Me</h2>
+    <p style="color:#ccc; line-height:1.7;">
+      I simplify politics, society, and real-world issues. I don’t just explain news —
+      I break down the meaning behind it in a clear, raw and understandable way.
+    </p>
+  </div>
+</div>
+
+<!-- VIDEO -->
 <div class="section video">
-  <h2>Featured Video</h2>
-
-  <iframe 
-    src="https://www.youtube.com/embed/oLZQYplu1Gg"
-    title="YouTube video"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen
-    style="width:100%; max-width:560px; height:315px; border-radius:10px;">
-  </iframe>
-
+  <div class="card">
+    <h2>Featured Video</h2>
+    <iframe src="https://www.youtube.com/embed/oLZQYplu1Gg" allowfullscreen></iframe>
+  </div>
 </div>
 
-<!-- Contact -->
-<div class="section contact">
-  <h2>Contact</h2>
-  <p>DM me on Instagram for collaborations</p>
+<!-- CONTACT -->
+<div class="section">
+  <div class="card">
+    <h2>Contact</h2>
+    <p style="color:#ccc;">DM me on Instagram for collaborations or brand work.</p>
+  </div>
 </div>
 
 <footer>
-  © 2026 Jayasurya
+  © 2026 Jayasurya • Built with passion
 </footer>
 
 </body>
