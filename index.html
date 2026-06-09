@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Jayasurya | Reality Explained</title>
+<title>Jayasurya</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -25,65 +25,18 @@ body{
   overflow-x:hidden;
 }
 
-/* ================= LOADING SCREEN ================= */
-#loader{
-  position:fixed;
-  inset:0;
-  background:#0b0b0f;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  z-index:9999;
-}
-
-.loader-circle{
-  width:60px;
-  height:60px;
-  border:4px solid rgba(255,255,255,0.1);
-  border-top:4px solid #c08457;
-  border-radius:50%;
-  animation:spin 1s linear infinite;
-}
-
-@keyframes spin{
-  to{ transform:rotate(360deg); }
-}
-
-.loader-text{
-  margin-top:15px;
-  color:#aaa;
-  font-size:14px;
-  letter-spacing:1px;
-}
-
-/* ================= PARTICLES ================= */
-canvas{
+/* ===== PARTICLES BACKGROUND ===== */
+#particles{
   position:fixed;
   top:0;
   left:0;
+  width:100%;
+  height:100%;
   z-index:-1;
+  background: radial-gradient(circle at top, #1a1a2e, #0b0b0f 60%);
 }
 
-/* ================= NAV ================= */
-nav{
-  position:sticky;
-  top:0;
-  background:rgba(0,0,0,0.4);
-  backdrop-filter:blur(12px);
-  padding:14px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:1px solid rgba(255,255,255,0.1);
-  z-index:10;
-}
-
-nav span{
-  color:#c08457;
-}
-
-/* ================= HERO ================= */
+/* ===== HERO ===== */
 .hero{
   height:420px;
   background:url('banner.png') center/cover no-repeat;
@@ -97,7 +50,7 @@ nav span{
   background:linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.95));
 }
 
-/* ================= PROFILE ================= */
+/* ===== PROFILE ===== */
 .profile{
   text-align:center;
   margin-top:-70px;
@@ -114,27 +67,33 @@ h1{
   margin-top:10px;
 }
 
-/* ================= SUBSCRIBE BUTTON ================= */
+.tagline{
+  color:#aaa;
+  font-size:14px;
+}
+
+/* ===== SUBSCRIBE BUTTON ===== */
 .subscribe-btn{
+  margin-top:12px;
   display:inline-flex;
   align-items:center;
-  gap:8px;
-  margin-top:10px;
-  padding:10px 18px;
+  gap:10px;
+  padding:12px 18px;
+  border-radius:30px;
   background:#ff0000;
   color:white;
   text-decoration:none;
-  border-radius:25px;
   font-weight:600;
+  box-shadow:0 10px 20px rgba(255,0,0,0.3);
   transition:0.3s;
 }
 
 .subscribe-btn:hover{
   transform:scale(1.05);
-  background:#cc0000;
+  background:#e60000;
 }
 
-/* ================= SECTIONS ================= */
+/* ===== SECTIONS ===== */
 .section{
   max-width:900px;
   margin:50px auto;
@@ -142,24 +101,24 @@ h1{
 }
 
 .card{
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.12);
   border-radius:18px;
   padding:25px;
-  backdrop-filter:blur(12px);
+  backdrop-filter:blur(10px);
 }
 
-/* ================= SOCIAL ================= */
+/* ===== LINKS ===== */
 .links{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
   gap:12px;
 }
 
 .links a{
   text-align:center;
   padding:12px;
-  border-radius:12px;
+  border-radius:14px;
   text-decoration:none;
   color:white;
   background:linear-gradient(145deg,#8b5e3c,#c08457);
@@ -170,31 +129,34 @@ h1{
   transform:translateY(-4px);
 }
 
-/* ================= VIDEO ================= */
+/* ===== VIDEO ===== */
 iframe{
   width:100%;
   height:360px;
   border:none;
+  border-radius:14px;
+}
+
+/* ===== POPUP ===== */
+.popup{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#111;
+  padding:15px;
   border-radius:12px;
+  border:1px solid #333;
+  display:none;
 }
 
-/* ================= FOOTER ================= */
-footer{
-  text-align:center;
-  padding:30px;
-  color:#777;
-}
-
-/* ================= ANIMATION ================= */
-.fade{
-  opacity:0;
-  transform:translateY(40px);
-  transition:1s ease;
-}
-
-.fade.show{
-  opacity:1;
-  transform:translateY(0);
+.popup button{
+  margin-top:10px;
+  padding:8px 12px;
+  background:#c08457;
+  border:none;
+  color:white;
+  border-radius:8px;
+  cursor:pointer;
 }
 
 </style>
@@ -202,112 +164,75 @@ footer{
 
 <body>
 
-<!-- ================= LOADER ================= -->
-<div id="loader">
-  <div class="loader-circle"></div>
-  <div class="loader-text">Loading Reality...</div>
-</div>
-
-<!-- ================= PARTICLES ================= -->
+<!-- PARTICLES CANVAS -->
 <canvas id="particles"></canvas>
-
-<!-- NAV -->
-<nav>
-  <h3>Jaya<span>surya</span></h3>
-  <i class="fa-solid fa-bolt"></i>
-</nav>
 
 <!-- HERO -->
 <div class="hero"></div>
 
 <!-- PROFILE -->
 <div class="profile">
-  <img src="profile.webp" alt="">
+  <img src="profile.webp" alt="profile">
   <h1>Jayasurya</h1>
+  <p class="tagline">Unmai Makkal 👁️</p>
+  <p class="tagline">Politics • Society • Reality Breakdown</p>
 
-  <!-- YOUTUBE SUBSCRIBE BUTTON -->
+  <!-- ✅ YOUTUBE SUBSCRIBE BUTTON -->
+  <br>
   <a class="subscribe-btn"
      href="https://www.youtube.com/@justjayasurya?sub_confirmation=1"
      target="_blank">
-     <i class="fab fa-youtube"></i> Subscribe
+    <i class="fab fa-youtube"></i>
+    Subscribe
   </a>
-
-  <p style="color:#aaa;margin-top:8px;">Politics • Society • Reality Breakdown</p>
 </div>
 
-<!-- SOCIAL -->
-<div class="section fade">
+<!-- SOCIAL LINKS (UNCHANGED CONTENT STYLE) -->
+<div class="section">
   <div class="card">
-    <h2>Connect</h2>
     <div class="links">
-
       <a href="https://youtube.com/@justjayasurya"><i class="fab fa-youtube"></i> YouTube</a>
       <a href="https://instagram.com/justjayasurya"><i class="fab fa-instagram"></i> Instagram</a>
       <a href="https://x.com/justjayasurya"><i class="fab fa-x-twitter"></i> X</a>
       <a href="https://t.me/JustjayasuryaOfficial"><i class="fab fa-telegram"></i> Telegram</a>
-
     </div>
   </div>
 </div>
 
-<!-- ABOUT -->
-<div class="section fade">
-  <div class="card">
-    <h2>About</h2>
-    <p style="color:#ccc;line-height:1.7;">
-      I simplify politics and society. I decode real-world systems in a way anyone can understand.
-    </p>
-  </div>
-</div>
-
 <!-- VIDEO -->
-<div class="section fade">
+<div class="section">
   <div class="card">
-    <h2>Featured Video</h2>
     <iframe src="https://www.youtube.com/embed/oLZQYplu1Gg" allowfullscreen></iframe>
   </div>
 </div>
 
-<footer>
-  © 2026 Jayasurya
-</footer>
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <b>Subscribe?</b>
+  <p style="font-size:12px;color:#aaa;">Get updates from YouTube</p>
+  <button onclick="document.getElementById('popup').style.display='none'">Close</button>
+</div>
 
-<!-- ================= SCRIPTS ================= -->
 <script>
 
-/* ===== LOADER REMOVE ===== */
-window.addEventListener("load",()=>{
-  setTimeout(()=>{
-    document.getElementById("loader").style.display="none";
-  },1200);
-});
-
-/* ===== SCROLL ANIMATION ===== */
-const faders = document.querySelectorAll(".fade");
-
-window.addEventListener("scroll",()=>{
-  faders.forEach(el=>{
-    const top = el.getBoundingClientRect().top;
-    if(top < window.innerHeight - 100){
-      el.classList.add("show");
-    }
-  });
-});
-
-/* ===== PARTICLES (GLOW STYLE) ===== */
+/* ================= SMOOTHER PARTICLES ================= */
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+function resize(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
 
 let particles = [];
 
-for(let i=0;i<60;i++){
+for(let i=0;i<100;i++){
   particles.push({
     x:Math.random()*canvas.width,
     y:Math.random()*canvas.height,
-    r:Math.random()*2+1,
+    r:Math.random()*2,
     d:Math.random()*1
   });
 }
@@ -315,25 +240,30 @@ for(let i=0;i<60;i++){
 function draw(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
 
-  for(let i=0;i<particles.length;i++){
-    let p = particles[i];
+  ctx.fillStyle="rgba(255,255,255,0.6)";
 
-    ctx.fillStyle="rgba(192,132,87,0.6)";
+  particles.forEach(p=>{
     ctx.beginPath();
     ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
     ctx.fill();
 
-    p.y += p.d;
+    p.y += p.d + 0.2;
+    p.x += Math.sin(p.y*0.01)*0.3;
+
     if(p.y > canvas.height){
       p.y = 0;
       p.x = Math.random()*canvas.width;
     }
-  }
+  });
 
   requestAnimationFrame(draw);
 }
-
 draw();
+
+/* ===== POPUP ===== */
+setTimeout(()=>{
+  document.getElementById("popup").style.display="block";
+},5000);
 
 </script>
 
