@@ -330,9 +330,9 @@ function closePopup(){
 
 </script>
 
-<!-- CONTACT SECTION (FIXED POSITION) -->
+<!-- CONTACT (FORCED VISIBILITY FIX) -->
 
-<div class="section contact">
+<div class="section contact" style="position:relative; z-index:5;">
 
   <div class="card">
 
@@ -344,21 +344,27 @@ function closePopup(){
 
 </div>
 
-  
 
-<!-- FOOTER CENTER FIXED -->
+
+<!-- FOOTER CENTER FIX (GUARANTEED) -->
 
 <footer style="
 
+  position:relative;
+
+  z-index:5;
+
+  width:100%;
+
   text-align:center;
 
-  padding:25px 0;
+  padding:25px 10px;
 
   color:#777;
 
   font-size:14px;
 
-  width:100%;
+  background:transparent;
 
 ">
 
